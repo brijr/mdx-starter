@@ -37,19 +37,23 @@ const Main = ({ children, className, id }: MainProps) => {
   return (
     <main
       className={cn(
+        // `Main` Specific Styles
+        "max-w-none prose-p:m-0",
         // General Prose
-        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg max-w-none",
+        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg",
         // Prose Headings
-        "prose-headings:font-normal prose-h1:mt-0",
-        // Prose Paragraphs
-        "prose-p:mb-0",
+        "prose-headings:font-normal",
         // Prose Strong
         "prose-strong:font-semibold",
         // Inline Links
-        "prose-a:underline prose-a:underline-offset-2 prose-a:decoration-primary hover:prose-a:opacity-80 prose-a:transition-all hover:prose-a:underline-offset-4 prose-a:text-primary",
+        "prose-a:underline prose-a:decoration-primary/50 prose-a:underline-offset-2 prose-a:text-foreground/75 prose-a:transition-all",
+        // Inline Link Hover
+        "hover:prose-a:decoration-primary hover:prose-a:text-foreground",
         // Blockquotes
         "prose-blockquote:not-italic",
-        className,
+        // Pre and Code Blocks
+        "prose-pre:border prose-pre:bg-muted/25 prose-pre:text-foreground",
+        className
       )}
       id={id}
     >
@@ -90,24 +94,39 @@ const Container = ({ children, className, id }: ContainerProps) => {
 
 // Article Component
 type ArticleProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   id?: string;
+  dangerouslySetInnerHTML?: { __html: string };
 };
 
-const Article = ({ children, className, id }: ArticleProps) => {
+const Article = ({
+  children,
+  className,
+  id,
+  dangerouslySetInnerHTML,
+}: ArticleProps) => {
   return (
     <article
+      dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       className={cn(
         // General Prose
         "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg",
         // Prose Headings
         "prose-headings:font-normal",
+        // Prose Paragraphs
+        "prose-p:mb-0",
+        // Prose Strong
+        "prose-strong:font-semibold",
         // Inline Links
-        "prose-a:underline prose-a:underline-offset-2 prose-a:decoration-primary hover:prose-a:opacity-80 prose-a:transition-all hover:prose-a:underline-offset-4 prose-a:text-primary",
+        "prose-a:underline prose-a:decoration-primary/50 prose-a:underline-offset-2 prose-a:text-foreground/75 prose-a:transition-all",
+        // Inline Link Hover
+        "hover:prose-a:decoration-primary hover:prose-a:text-foreground",
         // Blockquotes
         "prose-blockquote:not-italic",
-        className,
+        // Pre and Code Blocks
+        "prose-pre:border prose-pre:bg-muted/25",
+        className
       )}
       id={id}
     >
