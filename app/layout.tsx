@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { Layout, Main, Section, Container } from "@/components/craft";
+import { Layout } from "@/components/craft";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 import "./globals.css";
@@ -37,11 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Main>
-            <Section>
-              <Container>{children}</Container>
-            </Section>
-          </Main>
+          {children}
         </ThemeProvider>
       </body>
     </Layout>
