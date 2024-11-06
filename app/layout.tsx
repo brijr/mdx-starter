@@ -14,7 +14,8 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "MDX Starter Template for Building Websites",
-  description: "Made by Bridger Tower at 9d8 and Yuzu.",
+  description:
+    "MDX and Next.js Starter made by Bridger Tower at 9d8 and WIP / AC",
 };
 
 export default function RootLayout({
